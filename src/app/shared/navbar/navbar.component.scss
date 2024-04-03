@@ -1,0 +1,9 @@
+.nav-hover {
+  margin-left: .25em;
+  margin-right: .25em;
+  &:hover {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+  }
+}
