@@ -1,1 +1,32 @@
-<p>get-all-products works!</p>
+<div class="">
+  <app-post-product></app-post-product>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (product of allProducts; track product.preco) {
+        <tr>
+          <td>{{product.id}}</td>
+          <td>{{product.nomeProduto}}</td>
+          <td>{{product.descricao}}</td>
+          <td>{{product.preco}}</td>
+          <th>
+            <button
+              (click)="deletar(product.id)"
+              class="btn btn-danger">
+              Deletar
+            </button>
+          </th>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

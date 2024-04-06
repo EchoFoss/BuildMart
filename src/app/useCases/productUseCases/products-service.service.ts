@@ -5,30 +5,33 @@ import {AbstractServiceInterface} from "../abstract-service.interface";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsServiceService implements AbstractServiceInterface<ProdutoModel>{
+export class ProductsService implements AbstractServiceInterface<ProdutoModel>{
 
-  public produtos: Map<string, ProdutoModel> = new Map<string, ProdutoModel>();
-
-  constructor() { }
+  public produtos: Array<ProdutoModel> = [];
 
   add(input: ProdutoModel): void {
-    this.produtos.set(input.id, input);
+    this.produtos.push(input)
   }
-  readAll(input: ProdutoModel): readonly ProdutoModel[] {
-    return Array.from(this.produtos.values())
+  readAll(): readonly ProdutoModel[] {
+    return this.produtos
   }
-  readById(id: string): ProdutoModel | null {
+  readById(productId: string): ProdutoModel | null {
 
-    const retrievedProduct = this.produtos.get(id);
+    const retrievedProduct =
+      this.produtos.find((produto) => produto.id === productId)
 
     return retrievedProduct ?? null
 
   }
   update(input: ProdutoModel): void {
 
-    this.produtos.set(input.id, input)
+    const productIndex =
+      this.produtos.findIndex((produto) => produto.id === input.id)
+
+    this.produtos[productIndex] = input
   }
   delete(id: string): void {
-    this.produtos.delete(id)
+    const index = this.produtos.findIndex((produto) => produto.id === id);
+    this.produtos.splice(index, 1)
   }
 }

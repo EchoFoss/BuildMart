@@ -1,1 +1,17 @@
-<p>post-product works!</p>
+<div class="d-flex justify-content-center">
+  <form class="">
+    <label for="nameProduto">Nome do produto</label>
+    <input type="text" name="nameProduto" id="nameProduto" [(ngModel)]="nameProduto">
+    <br>
+
+    <label for="descriçaoProduto">Descrição do produto</label>
+    <input type="text" name="descriçaoProduto" id="descriçaoProduto" [(ngModel)]="descricao">
+    <br>
+
+    <label for="precoProduto">Preço do produto</label>
+    <input type="number" name="precoProduto" id="precoProduto" [(ngModel)]="preco">
+    <br>
+
+    <button type="submit" (click)="submit()">Criar o produto</button>
+  </form>
+</div>
